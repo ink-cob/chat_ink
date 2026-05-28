@@ -1,4 +1,4 @@
-const API_URL = 'https://ink-chaaat.onrender.com';
+const API_URL = 'https://chat-ink.onrender.com';
 let currentUser = null;
 let activeChatId = null;
 let localContacts = JSON.parse(localStorage.getItem('ink_contacts')) || [];
