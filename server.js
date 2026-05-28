@@ -3,7 +3,30 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Настройка CORS для разрешения запросов с вашего GitHub Pages
+app.use(cors({
+    origin: 'https://ink-cob.github.io',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
+
+// Явная обработка preflight-запросов (OPTIONS), на которые ругается браузер
+app.options('*', cors());
+
+app.use(express.json());
+
+// Временное хранилище в памяти сервера
+let users = [];
+let messages = [];
+
+// ... далее идет остальной код вашей Части 4.1 и Части 4.2
+
 app.use(express.json());
 
 // Временное хранилище в памяти сервера (очищается при перезагрузке сервера на Render)
